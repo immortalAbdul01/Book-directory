@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const userRoutes = require('./routes/userRoutes')
 const bookRoutes = require('./routes/bookRoutes')
 const app = express()
 const mongoose = require('mongoose')
@@ -11,6 +12,7 @@ mongoose.connect(process.env.LINK, () => {
 app.use(express.json())
 
 app.use('/', bookRoutes)
+app.use('/', userRoutes)
 app.listen(process.env.PORT, () => {
     console.log(`the server has been started on ${process.env.PORT}`)
 })
